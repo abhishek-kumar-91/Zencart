@@ -3,7 +3,7 @@ const cors = require('cors');
 const userRouter = require('./routing/user');
 const connectDatabase = require('./connect')
 const User = require("./modules/user")
-
+const path = require('path')
 
 
 
@@ -22,7 +22,7 @@ const PORT = 9000;
 //middileware
 app.use(express.json())
 app.use(cors());
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //routing
 app.use("/", userRouter)
